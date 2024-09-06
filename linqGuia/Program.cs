@@ -7,7 +7,7 @@ Console.WriteLine("Hello, World!");
 
 #region ListaModelos
 
-List<Casa> listaCasa = new List<Casa>();
+List<Casa> listaCasas = new List<Casa>();
 List<Habitante> listaHabitante = new List<Habitante>();
 
 #endregion
@@ -15,7 +15,7 @@ List<Habitante> listaHabitante = new List<Habitante>();
 #region Casa
 
 // Clase anónima - No se puede escribir sobre ella, son de solo lectura.
-listaCasa.Add(new Casa
+listaCasas.Add(new Casa
 {
     IdCasa = 1,
     Direccion = "3 avn Chalatenango",
@@ -23,7 +23,7 @@ listaCasa.Add(new Casa
     numeroHabitaciones = 20
 });
 
-listaCasa.Add(new Casa
+listaCasas.Add(new Casa
 {
     IdCasa = 2,
     Direccion = "4 av",
@@ -31,7 +31,7 @@ listaCasa.Add(new Casa
     numeroHabitaciones = 9
 });
 
-listaCasa.Add(new Casa
+listaCasas.Add(new Casa
 {
     IdCasa = 3,
     Direccion = "6 avn",
@@ -123,11 +123,17 @@ foreach(var iteracion in listaEdad)
 }
 
 // JOIN
-IEnumerable<Habitante> listaCasa = from objTemporalHabitante in listaHabitante
-                                   join objTemporalCasa in listaCasa
+IEnumerable<Habitante> listaCasaGothan = from objTemporalHabitante in listaHabitante
+                                   join objTemporalCasa in listaCasas
                                    on objTemporalHabitante.IdHabitante equals objTemporalCasa.IdCasa
-                                   where objTemporalCasa.Ciudad = "Chalatenango"
+                                   where objTemporalCasa.Ciudad == "Chalatenango"
                                    select objTemporalHabitante;
+Console.WriteLine("----------------------------------------------------------------------------------------------");
+foreach (Habitante h in listaCasaGothan)
+{
+    Console.WriteLine(h.datosHabitante());
+}
+
 
 
 #endregion

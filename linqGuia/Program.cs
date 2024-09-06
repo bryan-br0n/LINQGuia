@@ -138,8 +138,29 @@ foreach (Habitante h in listaCasaGothan)
 
 #endregion
 
-#region 
+#region FirsthAndFirsthOrDefault
+Console.WriteLine("----------------------------------------------------------------------------------------------");
+var primeraCasa = listaCasas.First(); //esto no es linQ es  una fucnin de los Ienumarable
+Console.WriteLine(primeraCasa.dameDatosCasa());
 
+//aplicando una restriccion sin restricion lambda
+Habitante personaEdad = (from variableTemporalHabitante in listaHabitante where variableTemporalHabitante.Edad > 25 select variableTemporalHabitante).First();
+Console.WriteLine(personaEdad.datosHabitante());
+Console.WriteLine("---------------------------Lo mismo pero con lambdas---------------------------------------------------------");
+var Habitante1 = listaHabitante.First(objectTemp => objectTemp.Edad > 25);
+Console.WriteLine(Habitante1.datosHabitante());
 
+// Si no tenemos el elemento que buscamos entonces la consulta devolvera una exepcion esto detendra el codigo en su totalidad
+
+//Casa EdadError = (from vCasaTemp in ListaCasas where vCasaTemp.Id >10 select vCasaTemp).First() ;
+//Console.WriteLine(EdadError.dameDatosCasa());
+
+Casa CasaConFirsthOrDedault = listaCasas.FirstOrDefault(vCasa => vCasa.Id > 200);
+if (CasaConFirsthOrDedault == null)
+{
+    Console.WriteLine("No existe !No hay!");
+    return;
+}
+Console.WriteLine("existe !Si existe!");
 
 #endregion

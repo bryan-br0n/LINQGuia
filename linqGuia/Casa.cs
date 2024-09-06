@@ -16,7 +16,7 @@ namespace linqGuia
 
         public int numeroHabitaciones { get; set; }
 
-        public string datosCasa()
+        public string dameDatosCasa()
         {
             return $"La dirección es {Direccion}, en la ciudad {Ciudad} con el número de habitaciones {numeroHabitaciones}";
         }
